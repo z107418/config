@@ -1,27 +1,41 @@
 spring:
   application:
-    name: order-service
+    name: feign
+  rabbitmq:
+    host: 192.168.127.136
+    port: 5672
+    username: admin
+    password: admin
     
-server:
-  port: 8201  
-  
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
   cloud:
     config:
       override-none: true
-      
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
+
+
 feign:
   hystrix:
     enabled: true
-item-service:
-  ribbon:
-    
     
 management:
   endpoints:
     web:
       exposure:
         include: hystrix.stream
+
+
+---
+spring:
+  profiles: sp04-orderservice-8201
+  
+server:
+  port: 8201      
+---
+spring:
+  profiles: sp04-orderservice-8202
+server:
+  port: 8202  

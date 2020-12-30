@@ -1,11 +1,16 @@
 spring:
   application:
     name: item-service
-  cloud:
-    config:
-      override-none: true
-server:
-  port: 8001
+  rabbitmq:
+    host: 192.168.127.136
+    port: 5672
+    username: admin
+    password: admin
+    
+    
+#server:
+#  port: 8001
+  
 eureka:
   client:
     service-url:
@@ -13,6 +18,8 @@ eureka:
   cloud:
     config:
       override-none: true
+  
+   
 ---
 spring:
   profiles: item1
